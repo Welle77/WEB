@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-const workoutProgramSchema = new mongoose.Schema({
+const exerciseSchema = new Schema({
   name: { type: String, required: true },
   description: String,
   sets: Number,
@@ -9,7 +9,12 @@ const workoutProgramSchema = new mongoose.Schema({
   time: Number,
 });
 
-const userSchema = new mongoose.Schema({
+const workoutProgramSchema = new Schema({
+  name: { type: String, trim: true, required: true },
+  exercises: [exerciseSchema],
+});
+
+const userSchema = new Schema({
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true, trim: true },
   name: {
@@ -20,4 +25,4 @@ const userSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = { userSchema, workoutProgramSchema };
+module.exports = { userSchema, exerciseSchema, workoutProgramSchema };
