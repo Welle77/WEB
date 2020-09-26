@@ -17,7 +17,7 @@ const getWorkout = async (userId, workoutId) => {
   const user = await User.findById(userId, (err, user) => {
     if (err) console.log(err);
   });
-
+  
   return user.workouts.id(workoutId);
 };
 

@@ -23,7 +23,9 @@ const getExercise = async (userId, workoutId, exerciseId) => {
 
     const workouts = user.workouts.id(workoutId);
 
-    return workouts.exercises.id(exerciseId);
+    return new Exercise("Test","hej",30,30,30)
+    
+   // return workouts.exercises.id(exerciseId);
   });
 };
 
