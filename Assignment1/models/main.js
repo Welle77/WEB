@@ -1,4 +1,3 @@
-const user = require("./user");
 const workout = require("./workout");
 const exercise = require("./exercise");
 const mongoose = require("mongoose");

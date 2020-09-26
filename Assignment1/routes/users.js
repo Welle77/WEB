@@ -1,13 +1,24 @@
 var express = require("express");
 var router = express.Router();
-const { index, auth } = require("../controllers/start");
+const {
+  showSignup,
+  showLogin,
+  login,
+  signup,
+} = require("../controllers/userController");
 
+const passport = require("passport");
 /* GET home page. */
-router.get("/", index);
+router.get("/", showLogin);
 
-router.post("/submit", (req, res) => {
-  console.log(req);
-  //res.render("workouts", { title: "Exerciser" });
-});
+router.get("/signup", showSignup);
+
+router.post(
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/" }),
+  login
+);
+
+router.post("/signup", signup);
 
 module.exports = router;
