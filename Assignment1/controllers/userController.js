@@ -1,7 +1,4 @@
-const {
-  createWorkout,
-  addExercise,
-} = require("../controllers/workoutController");
+const { addExercise } = require("../controllers/workoutController");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const { userSchema } = require("../models/schemas");
@@ -37,14 +34,4 @@ const signup = (req, res) => {
   });
 };
 
-const login = (req, res) => {
-  addExercise(req, res);
-  //   const matchedUser = User.findOne({ email: user.email }, async (err, user) => {
-  //     if (err) console.log(err);
-  //     const plaintextPassword = "qwerasdf";
-  //     const match = await bcrypt.compare(plaintextPassword, user.password);
-  //     if (match) return user;
-  //   });
-};
-
-module.exports = { showLogin, showSignup, signup, login };
+module.exports = { showLogin, showSignup, signup };

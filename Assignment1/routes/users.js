@@ -16,7 +16,7 @@ router.get("/signup", showSignup);
 router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/" }),
-  login
+  (req, res) => res.redirect("/workouts/add/workout")
 );
 
 router.post("/signup", signup);
