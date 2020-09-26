@@ -1,7 +1,7 @@
 extends layout
 block content
     h1 #{title}
-    form(method='POST', action='/workouts/create/exercise')
+    form(method='POST', action='/exercises/create/')
         #form-group
             label Exercise:
             input.form-control(name='Exercise', type='text' placeholder='Exercise name', required = '')
