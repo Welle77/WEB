@@ -4,7 +4,7 @@ const userCtrl = require('../controllers/userController');
 const workOutCtrl = require('../controllers/workoutController');
 
 /* GET home page. */
-router.get('/', workOutCtrl.index);
+
 
 router.get('/workouts', workOutCtrl.workout);
 
