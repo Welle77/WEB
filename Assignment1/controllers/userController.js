@@ -1,4 +1,7 @@
-const { workout } = require("../controllers/workoutController");
+const {
+  createWorkout,
+  addExercise,
+} = require("../controllers/workoutController");
 const bcrypt = require("bcrypt");
 const mongoose = require("mongoose");
 const { userSchema } = require("../models/schemas");
@@ -28,14 +31,14 @@ const signup = (req, res) => {
         console.log(err);
         res.render("signup");
       } else {
-        console.log("else");
         res.render("");
       }
     });
   });
 };
 
-const login = (user) => {
+const login = (req, res) => {
+  addExercise(req, res);
   //   const matchedUser = User.findOne({ email: user.email }, async (err, user) => {
   //     if (err) console.log(err);
   //     const plaintextPassword = "qwerasdf";

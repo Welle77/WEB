@@ -3,6 +3,11 @@ const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const { userSchema } = require("../models/schemas");
 const User = mongoose.model("User", userSchema);
+const bcrypt = require("bcrypt");
+
+const isPasswordValid = async (plaintextPassword, hash) => {
+  return await bcrypt.compare(plaintextPassword, hash);
+};
 
 passport.use(
   new LocalStrategy(
@@ -10,7 +15,7 @@ passport.use(
       usernameField: "email",
     },
     function (username, password, done) {
-      User.findOne({ email: username }, function (err, user) {
+      User.findOne({ email: username }, async function (err, user) {
         if (err) {
           return done(err);
         }
@@ -19,7 +24,9 @@ passport.use(
             message: "Incorrect username.",
           });
         }
-        if (!user.validPassword(password)) {
+        const validity = await isPasswordValid(password, user.password);
+        console.log(validity);
+        if (!validity) {
           return done(null, false, {
             message: "Incorrect password.",
           });
