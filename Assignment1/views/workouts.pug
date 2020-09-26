@@ -4,9 +4,9 @@ block content
  h1= title
  p All Workouts
     p All exercises
-    form(method='GET', action='/exercise/')
+    form(method='GET', action='/workouts/getAll')
         #form-group 
             ul.list-group
                 each program, i in programs
                     li.list-group-item
-                        a(href="/exercise/")= program.name
+                        a(href="/workouts/")= program.name
