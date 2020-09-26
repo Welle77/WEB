@@ -49,13 +49,5 @@ const workout1 = {
 //****************Garbage test things*******************//
 
 (async () => {
-  const loggedInUser = await user.login(newUser);
-
-  const workout32 = await exercise.getExercisesList(
-    loggedInUser.id,
-    loggedInUser.workouts[0].id
-  );
-  console.log(workout32);
-
   mongoose.disconnect();
 })();
