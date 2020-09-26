@@ -2,7 +2,7 @@ extends layout
 
 block content
   div.text-center
-    form(class="form-signin" method="POST" action="/users/login")
+    form(class="form-signin" method="POST" action="/")
       #error
         if error
           p.text-danger Error!!!
@@ -14,5 +14,5 @@ block content
         input(type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required)
       - var divClasses=['checkbox', 'mb-3'];
         a(href="signup")
-          button(type="submit" class="form-control ") Sign up
+          button(type="submit" class="form-control") Sign up
           button(type="submit" class="form-control") Login
