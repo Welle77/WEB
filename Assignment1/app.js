@@ -4,10 +4,8 @@ var path = require("path");
 //parse requests
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var bodyParser = require("body-parser");
-
+const { connect } = require("./models/db");
 const passport = require("passport");
-require("./models/main");
 require("./config/passport");
 
 var workouts = require("./routes/workouts");
@@ -29,6 +27,8 @@ app.use(passport.initialize());
 
 app.use("/", usersRouter);
 app.use("/", workouts);
+
+connect();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

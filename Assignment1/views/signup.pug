@@ -1,16 +1,18 @@
 extends layout
 block content
   div.text-center
-    form(class="form-signin" method="POST" action="/submit")
+    form(class="form-signin" method="POST" action="/signup")
       #error
         if error
           p.text-danger Error!!!
         - var h1Classes = ['h3', 'mb-3', 'font-weight-normal']
           h1(class=h1Classes) Please sign in
         label( for="inputEmail" class="sr-only") Email address
-          input(type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus)
-      label(for="inputPassword" class="sr-only") Password
-        input(type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required)
+          input(type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required)
+        label(for="inputName" class="sr-only") Name
+          input(name="name" id="inputName" class="form-control" placeholder="Name" required)
+        label(for="inputPassword" class="sr-only") Password
+          input(type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required) 
         button(type="submit" class="form-control") Sign up
 
     block signupbutton
