@@ -1,12 +1,11 @@
 extends layout
 
 block content
- h1= title
- p All Workouts
-    p All exercises
+  h1= title
+  p All Workouts
     form(method='GET', action='/workouts/getAll')
-        #form-group 
-            ul.list-group
-                each program, i in programs
-                    li.list-group-item
-                        a(href="/workouts/")= program.name
+      #form-group 
+        ul.list-group
+          each workout, i in workouts
+            li.list-group-item
+              a(href="/workouts/")= workout.name

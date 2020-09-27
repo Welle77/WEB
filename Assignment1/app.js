@@ -6,7 +6,9 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const { connect } = require("./models/db");
 const passport = require("passport");
+const session = require("express-session");
 require("./config/passport");
+const flash = require("connect-flash");
 
 var workouts = require("./routes/workouts");
 var usersRouter = require("./routes/users");
@@ -21,9 +23,20 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "MySuperSecret",
+    saveUninitialized: true,
+    resave: false,
+    duration: 30 * 60 * 1000,
+    activeDuration: 5 * 60 * 1000,
+  })
+);
 
+app.use(express.static(path.join(__dirname, "public")));
+app.use(flash());
 app.use(passport.initialize());
+app.use(passport.session());
 
 app.use("/", usersRouter);
 app.use("/", workouts);

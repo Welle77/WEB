@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt");
 const { User } = require("../models/schemas");
-const { setUserID } = require("../models/userSingleton");
 
 const showLogin = async (req, res) => {
   res.render("", { title: "Exerciser" });
@@ -33,8 +32,6 @@ const signup = (req, res) => {
 };
 
 const login = (req, res) => {
-  console.log(req);
-  //setUserID(req);
   res.redirect("/workouts");
 };
 

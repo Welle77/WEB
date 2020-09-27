@@ -5,13 +5,27 @@ const exerciseCtrl = require("../controllers/exerciseController");
 
 /* GET home page. */
 
-router.get("/workouts/add", workoutCtrl.addWorkout);
-// router.get('/workout/', workOutCtrl.getWorkout)
-router.get("/workouts", workoutCtrl.getWorkoutList);
-router.post("/workouts/create", workoutCtrl.createWorkout);
-router.get("/exercises/add", exerciseCtrl.addExercise);
-// router.get('/exercise/', workOutCtrl.getExercise)
-router.post("/exercises/create", exerciseCtrl.createExercise);
-// router.get('/exercise/listAll', workOutCtrl.getExercisesList)
+router.get("/workouts/add", ensureAuthenticated, workoutCtrl.addWorkout);
+// router.get('/workout/', ensureAuthenticated, workOutCtrl.getWorkout)
+router.get("/workouts", ensureAuthenticated, workoutCtrl.getWorkoutList);
+router.post("/workouts/create", ensureAuthenticated, workoutCtrl.createWorkout);
+router.get("/exercises/add", ensureAuthenticated, exerciseCtrl.addExercise);
+// router.get('/exercise/', ensureAuthenticated, workOutCtrl.getExercise)
+router.post(
+  "/exercises/create",
+  ensureAuthenticated,
+  exerciseCtrl.createExercise
+);
+//router.get('/:id', ensureAuthenticated, programController.getProgramDetails);
+// router.get('/exercise/listAll', ensureAuthenticated, workOutCtrl.getExercisesList)
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash("danger", "Please login");
+    res.redirect("/users/login");
+  }
+}
 
 module.exports = router;
