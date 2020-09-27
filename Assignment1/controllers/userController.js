@@ -1,8 +1,6 @@
-const { addExercise } = require("../controllers/workoutController");
 const bcrypt = require("bcrypt");
-const mongoose = require("mongoose");
-const { userSchema } = require("../models/schemas");
-const User = mongoose.model("User", userSchema);
+const { User } = require("../models/schemas");
+const { setUserID } = require("../models/userSingleton");
 
 const showLogin = async (req, res) => {
   res.render("", { title: "Exerciser" });
@@ -34,4 +32,10 @@ const signup = (req, res) => {
   });
 };
 
-module.exports = { showLogin, showSignup, signup };
+const login = (req, res) => {
+  console.log(req);
+  //setUserID(req);
+  res.redirect("/workouts");
+};
+
+module.exports = { showLogin, showSignup, signup, login };

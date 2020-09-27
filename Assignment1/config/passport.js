@@ -14,25 +14,25 @@ passport.use(
     {
       usernameField: "email",
     },
-    function (username, password, done) {
-      User.findOne({ email: username }, async function (err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false, {
-            message: "Incorrect username.",
-          });
-        }
-        const validity = await isPasswordValid(password, user.password);
-        console.log(validity);
-        if (!validity) {
-          return done(null, false, {
-            message: "Incorrect password.",
-          });
-        }
-        return done(null, user);
+    async function (username, password, done) {
+      const user = await User.findOne({ email: username }, (err, user) => {
+        if (err) console.log(err);
+        return user;
       });
+
+      if (!user) {
+        return done(null, false, {
+          message: "Incorrect username.",
+        });
+      }
+
+      const validity = await isPasswordValid(password, user.password);
+      if (!validity) {
+        return done(null, false, {
+          message: "Incorrect password.",
+        });
+      }
+      return done(null, user);
     }
   )
 );
