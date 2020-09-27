@@ -24,7 +24,7 @@ function ensureAuthenticated(req, res, next) {
     return next();
   } else {
     req.flash("danger", "Please login");
-    res.redirect("/users/login");
+    res.redirect("/");
   }
 }
 

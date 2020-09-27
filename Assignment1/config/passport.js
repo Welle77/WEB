@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const { userSchema } = require("../models/schemas");
 const User = mongoose.model("User", userSchema);
 const bcrypt = require("bcrypt");
-const { setUserID } = require("../models/userSingleton");
 
 const isPasswordValid = async (plaintextPassword, hash) => {
   return await bcrypt.compare(plaintextPassword, hash);
@@ -34,7 +33,6 @@ passport.use(
         });
       }
 
-      setUserID(user.id);
       return done(null, user);
     }
   )
