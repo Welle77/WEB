@@ -1,13 +1,11 @@
 const workout = require("./workout");
 const exercise = require("./exercise");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 //***************DB CONNECT*******************//
-const url =
-  "mongodb+srv://dbUser:Demo@mongo.da2mm.azure.mongodb.net/Mongo?retryWrites=true&w=majority";
-
 const connect = () => {
-  mongoose.connect(url, {
+  mongoose.connect(process.env.DB_HOST, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,

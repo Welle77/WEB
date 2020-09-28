@@ -4,11 +4,11 @@ const { userSchema } = require("../models/schemas");
 const User = mongoose.model("User", userSchema);
 
 const showLogin = async (req, res) => {
-  res.render("", { title: "Exerciser" });
+  res.render("");
 };
 
 const showSignup = (req, res) => {
-  res.render("signup", { title: "Exerciser" });
+  res.render("signup");
 };
 
 const signup = (req, res) => {
@@ -27,14 +27,14 @@ const signup = (req, res) => {
         console.log(err);
         res.render("signup");
       } else {
-        res.render("/workouts");
+        res.redirect("");
       }
     });
   });
 };
 
 const login = (req, res) => {
-  res.redirect("/workouts");
+  res.redirect("workouts");
 };
 
 module.exports = { showLogin, showSignup, signup, login };

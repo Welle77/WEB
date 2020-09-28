@@ -33,10 +33,13 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
+app.use(require("connect-flash")());
+
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", usersRouter);
 app.use("/", workouts);
