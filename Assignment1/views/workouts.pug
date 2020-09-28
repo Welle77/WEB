@@ -3,9 +3,9 @@ extends layout
 block content
   h1= title
   p All Workouts
-    form(method='GET', action='/workouts/getAll')
+    form(method='GET', action='')
       #form-group 
         ul.list-group
           each workout, i in workouts
             li.list-group-item
-              a(href="/workouts/")= workout.name
+              a(href="/workouts/"+workout.name)= workout.name

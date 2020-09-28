@@ -24,12 +24,27 @@ module.exports.createWorkout = function (req, res) {
 };
 
 module.exports.getWorkoutList = function (req, res) {
-  const { user } = req.session.passport;
+  const { user: userID } = req.session.passport;
 
-  User.findById(user, (err, user) => {
+  User.findById(userID, (err, user) => {
+    console.log(user);
     if (err) console.log(err);
     res.render("workouts", { workouts: user.workouts });
   });
 };
 
-// module.exports.getWorkout = function (userId, workOutId) {};
+module.exports.getWorkout = function (req, res) {
+  const { id: workoutID } = req.params;
+  const { user: userID } = req.session.passport;
+
+  User.findById(userID, (err, user) => {
+    const workout = user.workouts.id(workoutID);
+
+    if (workout.exercises)
+      res.render("workout", {
+        exercises: workout.exercises,
+        title: workout.name,
+      });
+    else res.render("add_exercise");
+  });
+};

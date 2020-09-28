@@ -6,7 +6,7 @@ const exerciseCtrl = require("../controllers/exerciseController");
 /* GET home page. */
 
 router.get("/workouts/add", ensureAuthenticated, workoutCtrl.addWorkout);
-// router.get('/workout/', ensureAuthenticated, workOutCtrl.getWorkout)
+router.get("/workouts/:id", ensureAuthenticated, workoutCtrl.getWorkout);
 router.get("/workouts", ensureAuthenticated, workoutCtrl.getWorkoutList);
 router.post("/workouts/create", ensureAuthenticated, workoutCtrl.createWorkout);
 router.get("/exercises/add", ensureAuthenticated, exerciseCtrl.addExercise);
