@@ -5,6 +5,7 @@ const {
   showLogin,
   login,
   signup,
+  logout
 } = require("../controllers/userController");
 
 const passport = require("passport");
@@ -19,6 +20,7 @@ router.post(
   login
 );
 
+router.get("/logout", logout)
 router.post("/signup", signup);
 
 module.exports = router;

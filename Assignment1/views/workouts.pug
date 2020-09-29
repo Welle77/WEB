@@ -8,4 +8,14 @@ block content
         ul.list-group
           each workout, i in workouts
             li.list-group-item
-              a(href="/workouts/"+workout.name)= workout.name
+              a(href="/workouts/"+workout.id)= workout.name
+  block addworkout
+    br
+    a(href="/workouts/add" class="btn btn-primary") Add Workout
+  block logout
+  br
+  br
+  br
+  a(href='/logout', style='margin-left: 10px') Logout
+ 
+    

@@ -15,3 +15,10 @@ block content
             label Reps:
             input.form-control(name='Reps', type='text' placeholder='Enter time or reps', required = '')
         input.btn.btn-primary(type='submit', value='Submit', style='margin-top: 10px')
+    p All Workouts
+    form(method='GET', action='')
+      #form-group 
+        ul.list-group
+          each workout, i in workouts
+            li.list-group-item
+              a(href="/workouts/"+workout.id)= workout.name

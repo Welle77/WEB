@@ -33,8 +33,14 @@ const signup = (req, res) => {
   });
 };
 
+const logout = function(req, res){
+  req.logout();
+  req.flash('success', 'You are logged out');
+  res.redirect('/');
+};
+
 const login = (req, res) => {
   res.redirect("workouts");
 };
 
-module.exports = { showLogin, showSignup, signup, login };
+module.exports = { showLogin, showSignup, signup, login, logout};

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const { userSchema } = require("../models/schemas");
 const User = mongoose.model("User", userSchema);
 const { createWorkout } = require("../models/workout");
+const db = require("../models/db");
 
 module.exports.addWorkout = function (req, res) {
   res.render("add_workout", {
@@ -12,20 +13,20 @@ module.exports.addWorkout = function (req, res) {
 };
 
 module.exports.createWorkout = function (req, res) {
-  const user = User.findById("5f69a14c6be1ac5a98acf8d7", async (err, user) => {
+  const { user: userID } = req.session.passport;
+  User.findById(userID, (err, user) => {
     if (err) console.log(err);
-    let workout = new Workout();
+    const workout = new Workout();
     workout.name = req.body.workout_field;
+    workout.exercises = [];
     user.workouts.push(workout);
-    await user.save();
-    return user;
-  });
-  return user;
-};
+    user.save();
+    res.redirect("/workouts")
+  })
+}
 
 module.exports.getWorkoutList = function (req, res) {
   const { user: userID } = req.session.passport;
-
   User.findById(userID, (err, user) => {
     console.log(user);
     if (err) console.log(err);
