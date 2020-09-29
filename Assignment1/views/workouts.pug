@@ -1,21 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p All Workouts
-    form(method='GET', action='')
-      #form-group 
-        ul.list-group
-          each workout, i in workouts
-            li.list-group-item
-              a(href="/workouts/"+workout.id)= workout.name
-  block addworkout
+    h1= title
+    p All Workouts
+        form(method='GET', action='')
+            #form-group
+                ul.list-group
+                    each workout, i in workouts
+                        li.list-group-item
+                            a(href="/workouts/" + workout.id)= workout.name
+    block addworkout
+        br
+        a(href="/workouts/add" class="btn btn-primary") Add Workout
+    block logout
     br
-    a(href="/workouts/add" class="btn btn-primary") Add Workout
-  block logout
-  br
-  br
-  br
-  a(href='/logout', style='margin-left: 10px') Logout
+    br
+    br
+    a(href='/logout', style='margin-left: 10px') Logout
  
     

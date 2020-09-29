@@ -1,11 +1,11 @@
 var express = require("express");
 var router = express.Router();
 const {
-  showSignup,
-  showLogin,
-  login,
-  signup,
-  logout
+    showSignup,
+    showLogin,
+    login,
+    signup,
+    logout
 } = require("../controllers/userController");
 
 const passport = require("passport");
@@ -15,9 +15,9 @@ router.get("/", showLogin);
 router.get("/signup", showSignup);
 
 router.post(
-  "/login",
-  passport.authenticate("local", { failureRedirect: "/" }),
-  login
+    "/login",
+    passport.authenticate("local", {failureRedirect: "/"}),
+    login
 );
 
 router.get("/logout", logout)
