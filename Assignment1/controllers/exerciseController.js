@@ -29,6 +29,7 @@ module.exports.createExercise = function (req, res) {
         exercise.description = req.body.Description;
         exercise.sets = req.body.Set;
         exercise.reps = req.body.Reps;
+        exercise.time = req.body.Time;
         const workout = user.workouts.id(WorkoutId)
         console.log("workout: " +workout)
         workout.exercises.push(exercise)
