@@ -4,14 +4,14 @@ block content
     form(method='POST', action='/login')
         #form-group1
             label Email:
-            input.form-control(name='email',type='email', required)
+            input.form-control(name='email', type='email', required)
         #form-group2
             label Password:
-            input.form-control(name='password',type='password', required)
+            input.form-control(name='password', type='password', required)
         br
-        input.btn.btn-primary(type='submit',value='Submit')
+        input.btn.btn-primary(type='submit', value='Submit')
 
-    block signupbutton
+    block signup_button
     br
     p Don't have an account?
     a(href="signup" class="btn btn-primary") Sign up

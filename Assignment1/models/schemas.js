@@ -17,11 +17,7 @@ const exerciseSchema = new Schema({
     reps: {
         type: Number,
         required: true,
-    },
-    time: {
-        type: Number,
-        required: true,
-    },
+    }
 });
 
 const workoutProgramSchema = new Schema({
@@ -40,7 +36,5 @@ const userSchema = new Schema({
     createdAt: {type: Date, default: Date.now},
 });
 
-let exercise = mongoose.model("Exercise", exerciseSchema);
-let workout = mongoose.model("Workout", workoutProgramSchema);
 
-module.exports = {userSchema, Exercise: exercise, Workout: workout};
+module.exports = {userSchema,exerciseSchema, workoutProgramSchema};

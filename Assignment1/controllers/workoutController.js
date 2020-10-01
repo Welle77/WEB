@@ -15,7 +15,8 @@ module.exports.addWorkout = function (req, res) {
 module.exports.createWorkout = function (req, res) {
     const {user: userID} = req.session.passport;
     User.findById(userID, (err, user) => {
-        if (err) console.log(err);
+        if (err)
+            console.log(err);
         const workout = new Workout();
         workout.name = req.body.workout_field;
         workout.exercises = [];
@@ -40,7 +41,6 @@ module.exports.getWorkout = function (req, res) {
 
     User.findById(userID, (err, user) => {
         const workout = user.workouts.id(workoutID);
-
         if (workout.exercises)
             res.render("workout", {
                 exercises: workout.exercises,
