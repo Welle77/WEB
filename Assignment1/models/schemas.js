@@ -21,13 +21,23 @@ const exerciseSchema = new Schema({
 });
 
 const workoutProgramSchema = new Schema({
-    name: {type: String, trim: true, required: true},
+    name: {
+        type: String, 
+        trim: true, 
+        required: true},
     exercises: [exerciseSchema],
 });
 
 const userSchema = new Schema({
-    email: {type: String, required: true, trim: true, unique: true},
-    password: {type: String, required: true, trim: true},
+    email: {
+        type: String, 
+        required: true,
+        trim: true,
+        unique: true},
+    password: {
+        type: String, 
+        required: true, 
+        trim: true},
     name: {
         type: String,
         required: true,

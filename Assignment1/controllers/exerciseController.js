@@ -17,25 +17,24 @@ module.exports.addExercise = function (req, res) {
 // module.exports.getExercise = function(userId, workoutId, exerciseId){}
 
 module.exports.createExercise = function (req, res) {
-    const {user: userID} = req.session.passport;
+    const { user: userID } = req.session.passport;
     console.log("UserID: " + userID)
     User.findById(userID, (err, user) => {
         if (err)
             console.log(err);
         const WorkoutId = req.body.Workout
-        console.log("Id: "+WorkoutId)
-        Workout.findById(WorkoutId, (err, workout) => {
-            console.log(workout)
-            if (err)
-                console.log(err);
-            let exercise = new Exercise();
-            exercise.name = req.body.Exercise;
-            exercise.description = req.body.Description;
-            exercise.set = req.body.Set;
-            exercise.reps = req.body.Reps;
-            workout.exercises.push(exercise)
-            user.workouts.save();
-        })
+        console.log("Id: " + WorkoutId)
+        let exercise = new Exercise();
+        exercise.name = req.body.Exercise;
+        exercise.description = req.body.Description;
+        exercise.sets = req.body.Set;
+        exercise.reps = req.body.Reps;
+        const workout = user.workouts.id(WorkoutId)
+        console.log("workout: " +workout)
+        workout.exercises.push(exercise)
+        console.log("exercises: " +workout.exercises)
+        user.save();
+        console.log("user :"+ user)
     })
     res.redirect("/workouts/" + req.body.Workout)
 }
