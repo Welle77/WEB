@@ -1,21 +1,23 @@
 extends layout
 
 block content
-    h1= title
+  if workouts.length
     p All Workouts
-        form(method='GET', action='')
-            #form-group
-                ul.list-group
-                    each workout, i in workouts
-                        li.list-group-item
-                            a(href="/workouts/" + workout.id)= workout.name
-    block addworkout
-        br
-        a(href="/workouts/add" class="btn btn-primary") Add Workout
-    block logout
+      form(method='GET', action='')
+        #form-group
+          ul.list-group
+            each workout, i in workouts
+              li.list-group-item
+                a(href="/workouts/" + workout.id)= workout.name
+  block addworkout
     br
-    br
-    br
-    a(href='/logout', style='margin-left: 10px') Logout
- 
-    
+    if workouts.length
+      a(href="/workouts/add" class="btn btn-primary") Add Workout
+    else
+      a(href="/workouts/add" class="btn btn-primary") You have no workouts, add one now!
+  block logout
+  br
+  br
+  br
+
+

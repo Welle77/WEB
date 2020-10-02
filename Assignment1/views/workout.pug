@@ -1,28 +1,30 @@
 extends layout
 
 block content
-    h1= title
-    br
+  h1= title
+  br
+  if exercises.length
     form(method='GET', action='')
-        #form-group
-            label Exercises:
-                li.list-group-item
-                    table( class="table")
-                        tr
-                            th Name
-                            th Description
-                            th Sets
-                            th Reps
-                            th Time
-                                each exercise in exercises
-                                    tr
-                                        td #{exercise.name}
-                                        td #{exercise.description}
-                                        td #{exercise.sets}
-                                        td #{exercise.reps}
-                                        td #{exercise.time}
-    block addworkout
-        br
-        a(href="/workouts/exercises/add" class="btn btn-primary") Add Exercise
- 
-                        
+      #form-group
+        label Exercises:
+          li.list-group-item
+            table( class="table")
+              tr
+                th Name
+                th Description
+                th Sets
+                th Reps
+                th Time
+                  each exercise in exercises
+                    tr
+                      td #{exercise.name}
+                      td #{exercise.description}
+                      td #{exercise.sets}
+                      td #{exercise.reps}
+                      td #{exercise.time}
+  block addworkout
+    br
+    if exercises.length
+      a(href="/workouts/exercises/add" class="btn btn-primary") Add exercise
+    else
+      a(href="/workouts/exercises/add" class="btn btn-primary") You have no exercises, add one now!

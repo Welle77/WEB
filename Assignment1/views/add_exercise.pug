@@ -1,25 +1,25 @@
 extends layout
 block content
-    h1 #{title}
-    form(method='POST', action='/exercises/create/')
-        #form-group
-            label Exercise:
-            input.form-control(name='Exercise', type='text' placeholder='Exercise name', required = '')
-        #form-group
-            label Description:
-            input.form-control(name='Description', type='text' placeholder='Description of the exercise', required = '')
-        #form-group
-            label Set:
-            input.form-control(name='Set', type='text' placeholder='Number of sets', required = '')
-        #form-group
-            label Reps:
-            input.form-control(name='Reps', type='text' placeholder='Enter reps', required = '')
-        #form-group
-            label Time:
-            input.form-control(name='Time', type='text' placeholder='Enter time (optional)')
-        #form-group
-            label Workout:
-            select(name="Workout" id="" placeholder = "workout")
-                each workout, i in workouts
-                    option(value=workout._id) #{workout.name}
-        input.btn.btn-primary(type='submit', value='Submit', style='margin-top: 10px')
+  h1 #{title}
+  form(method='POST', action='/exercises/create/')
+    #form-group
+      label Exercise:
+      input.form-control(name='Exercise', type='text' placeholder='Exercise name', required = '')
+    #form-group
+      label Description:
+      input.form-control(name='Description', type='text' placeholder='Description of the exercise')
+    #form-group
+      label Set:
+      input.form-control(name='Set', type='text' placeholder='Number of sets',)
+    #form-group
+      label Reps:
+      input.form-control(name='Reps', type='text' placeholder='Enter reps',)
+    #form-group
+      label Time:
+      input.form-control(name='Time', type='text' placeholder='Enter time (optional)')
+    #form-group
+      label Workout:
+      select(name="Workout" id="" placeholder = "workout")
+        each workout, i in workouts
+          option(value=workout._id) #{workout.name}
+    input.btn.btn-primary(type='submit', value='Submit', style='margin-top: 10px')

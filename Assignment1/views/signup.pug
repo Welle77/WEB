@@ -1,22 +1,20 @@
 extends layout
 block content
-    h1 Register
-    form(method='POST', action='/signup')
-        #form-group
-            label Email:
-            input.form-control(name='email',type='email', required)
-        #form-group
-            label Name:
-            input.form-control(name='name',type='text', required)
-        #form-group
-            label Password:
-            input.form-control(name='password',type='password', required)
-        br
-        input.btn.btn-primary(type='submit',value='Submit')
+  h1 Register
+  form(method='POST', action='/signup')
+    #form-group
+      label Email:
+      input.form-control(name='email',type='email', required)
+    #form-group
+      label Name:
+      input.form-control(name='name',type='text', required)
+    #form-group
+      label Password:
+      input.form-control(name='password',type='password', required)
+    br
+    input.btn.btn-primary(type='submit',value='Submit')
 
-    block signupbutton
-        br
-        p Already have an account?
-        a(href="/" class="btn btn-primary") Login
-
-     
+  block signupbutton
+    br
+    p Already have an account?
+    a(href="/" class="btn btn-primary") Login
