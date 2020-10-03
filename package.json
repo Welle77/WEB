@@ -1,0 +1,19 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Welle77/WEB.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Welle77/WEB/issues"
+  },
+  "homepage": "https://github.com/Welle77/WEB#readme"
+}
