@@ -4,7 +4,7 @@
   "description": "��#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000#\u0000 \u0000W\u0000E\u0000B\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -14,6 +14,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Welle77/WEB/issues"
+  },
+  "engines": {
+    "node": "12.18.4",
+    "npm": "6.14.6"
   },
   "homepage": "https://github.com/Welle77/WEB#readme"
 }
